@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: ddl-tables-001
+      author: Pipecerquera
+      labels: "HU-SADMIN-001,ddl,tables"
+      comment: "subscription_plan: price in cents, barber cap, active flag (FR-024, models.md section 9)."
+      changes:
+        - sqlFile:
+            path: 001_create_subscription_plan.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_subscription_plan.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+  - changeSet:
+      id: ddl-tables-002
+      author: Pipecerquera
+      labels: "HU-SADMIN-001,ddl,tables"
+      comment: "idempotency_key: plan creation with Idempotency-Key in the same transaction (norm 5.3.8)."
+      changes:
+        - sqlFile:
+            path: 002_create_idempotency_key.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/002_create_idempotency_key.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
