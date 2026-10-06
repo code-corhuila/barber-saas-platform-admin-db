@@ -1,0 +1,4 @@
+# SQL and shell files run inside Linux containers: never let Git convert them to CRLF.
+*.sql text eol=lf
+*.sh text eol=lf
+*.yaml text eol=lf
