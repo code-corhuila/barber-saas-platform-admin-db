@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: dml-upserts-001
+      author: Pipecerquera
+      labels: "HU-SADMIN-001,dml,upserts,seed"
+      comment: "The three plans of models.md section 9 (Basico, Pro, Premium), upserted on the name."
+      changes:
+        - sqlFile:
+            path: 001_upsert_plans.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/02_dml/03_upserts/001_upsert_plans.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
