@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-indexes-001
+      author: Pipecerquera
+      labels: "HU-SADMIN-003,ddl,indexes"
+      comment: "Payments by barbershop and period, the plan foreign key and the pending outbox."
+      changes:
+        - sqlFile:
+            path: 001_create_payment_and_outbox_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/001_create_payment_and_outbox_indexes.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
