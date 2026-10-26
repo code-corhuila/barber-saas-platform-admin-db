@@ -33,3 +33,54 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-tables-003
+      author: Pipecerquera
+      labels: "HU-SADMIN-003,ddl,tables"
+      comment: "payment: a Wompi sandbox payment of a plan, confirmed by the signed event (ADR-017)."
+      changes:
+        - sqlFile:
+            path: 003_create_payment.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/003_create_payment.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+  - changeSet:
+      id: ddl-tables-004
+      author: Pipecerquera
+      labels: "HU-SADMIN-004,ddl,tables"
+      comment: "subscription_notice: one notice per barbershop, end date and threshold."
+      changes:
+        - sqlFile:
+            path: 004_create_subscription_notice.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/004_create_subscription_notice.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+  - changeSet:
+      id: ddl-tables-005
+      author: Pipecerquera
+      labels: "HU-SADMIN-004,ddl,tables"
+      comment: "outbox_event: the change and its event in one transaction (norm 5.3.11, ADR-016)."
+      changes:
+        - sqlFile:
+            path: 005_create_outbox_event.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/005_create_outbox_event.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
