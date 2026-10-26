@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-alter-001
+      author: Pipecerquera
+      labels: "HU-SADMIN-003,ddl,alter"
+      comment: "payment.plan_id references subscription_plan, ON DELETE RESTRICT."
+      changes:
+        - sqlFile:
+            path: 001_add_payment_plan_foreign_key.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/001_add_payment_plan_foreign_key.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
